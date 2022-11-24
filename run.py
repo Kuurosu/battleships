@@ -9,8 +9,19 @@ print(scores)
 
 # Implement board
 # The board will be generated automatically in a 5x5 layout. 
+BOARD = []
+
 for i in range(5):
-    print("O" * 5)
+    BOARD.append("O" * 5)
+
+def board_layout(BOARD):
+    """
+    Creates the board layout so that each list item (00000) is on a new line and is spaced out evenly between each 
+    """
+    for row in BOARD:
+        print(" ".join(row))
+
+board_layout(BOARD)
 
 # Implement random int
 # A function will be created to handle the computer's choice for the 
