@@ -23,6 +23,13 @@ class Board:
             print(row_number, "|".join(row))
             row_number += 1
 
+def board_load():
+    print("\nComputer's side\n")
+    computer_board = Board(["~"] * 5 for i in range(5))
+    Board.play_board(computer_board)
+    print("\nYour side\n")
+    player_board = Board(["~"] * 5 for i in range(5))
+    Board.play_board(player_board)
 
 # Implement random int
 # A function will be created to handle the computer's choice for the 
@@ -49,20 +56,33 @@ def get_user_input():
     col_guess = 0
     while True:
         print("\nWhat row would you like your first ship?\n")
-        # user_row = int(input("Please type a number from 1-5: "))
-        # user_row = int(user_row_str)
         try:
             user_row = int(input("Please type a number from 1-5: "))
             if user_row < 6 and user_row > 0:
-                user_row - 1
-                user_ship_placement.append(user_row)
+                user_append_row = user_row - 1
+                user_ship_placement.append(user_append_row)
                 break
             else:
                 print("\nThat is not a number within 1-5")
                 continue
         except ValueError:
-            print("That is not a number within 1-5 or not a number. Please try again.\n")
+            print("That is not a number. Please try again.\n")
             continue
+    while True:
+        print("\nWhat column would you like your first ship?\n")
+        try:
+            user_col = int(input("Please type a number from 1-5: "))
+            if user_col < 6 and user_col > 0:
+                user_append_col = user_col - 1
+                user_ship_placement.append(user_append_col)
+                break
+            else:
+                print("\nThat is not a number within 1-5")
+                continue
+        except ValueError:
+            print("That is not a number. Please try again.\n")
+            continue
+
     print(user_ship_placement)
 
 
@@ -84,12 +104,7 @@ SHIP_PLACEMENT = []
 
 # Implement new game
 def run_game():
-    print("\nComputer's side\n")
-    computer_board = Board(["~"] * 5 for i in range(5))
-    Board.play_board(computer_board)
-    print("\nYour side\n")
-    player_board = Board(["~"] * 5 for i in range(5))
-    Board.play_board(player_board)
+    board_load()
     computer_ships()
     get_user_input()
     
