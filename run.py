@@ -1,11 +1,6 @@
 # Import random
 import random
 
-# Implement turns
-# The player will have a limited amount of turns to hit the computer's 
-# battleships
-turn = 10
-
 # Implement board
 # The board will be generated automatically in a 5x5 layout. 
 class Board:
@@ -16,6 +11,10 @@ class Board:
         self.board = board
     
     def play_board(self):
+        """
+        Creates the board. Works with the run_game function to work out how
+        many rows it needs to connect with. 
+        """
         print("  A B C D E")
         row_number = 1
         for row in self.board:
@@ -23,6 +22,9 @@ class Board:
             row_number += 1
     
     def letter_to_number():
+        """
+        Converts the letter to a number and returns it.
+        """
         list_of_letter = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4}
         return list_of_letter
 
@@ -45,10 +47,15 @@ class Ship:
         return self.board
     
     def get_user_guess(self):
+        """
+        This inputs the user for their guesses of where the ship could be.
+        If it isn't correct it reruns the function till an appropriate
+        guess is made.
+        """
         try:
-            user_row = input("Type a number between 1-5: ")
-            user_column = input("Type a letter from A-E: ").upper()
-            return user_row, Board.letter_to_number()[user_column]
+            user_row = int(input("Type a number between 1-5: "))
+            user_column = input("Type a letter from A-E: ").upper().strip()
+            return user_row - 1, Board.letter_to_number()[user_column]
         except ValueError and KeyError:
             print("Not a valid coordinate. Please try again.")
             return Ship.get_user_guess(self)
@@ -62,13 +69,20 @@ def run_game():
     computer_board = Board([[" "] * 5 for i in range(5)])
     user_board = Board([["~"] * 5 for i in range(5)])
     Ship.computer_ships(computer_board)
-    Board.play_board(user_board)
-    # Uncomment the line below to show the computers board
-    Board.play_board(computer_board)
 
-    # user_row_input, user_col_input = Ship.get_user_guess(object)
-    # print(user_row_input, user_col_input)
+    turns = 10
+    while turns > 0:
+        Board.play_board(user_board)
+        # Uncomment the line below to show the computers board
+        Board.play_board(computer_board)
 
+        # Gets the users guess
+        user_row_input, user_col_input = Ship.get_user_guess(object)
+        print(user_row_input, user_col_input)
 
-    
+        # Checks the user input to see if a ship was hit
+        if computer_board.board[user_row_input][user_col_input] == "X":
+            print("You sunk a battleship!")
+            user_board.board[user_row_input][user_col_input] = "X"
+
 run_game()
