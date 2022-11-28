@@ -5,7 +5,6 @@ import random
 # The player will have a limited amount of turns to hit the computer's 
 # battleships
 turn = 10
-print(turn)
 
 # Implement board
 # The board will be generated automatically in a 5x5 layout. 
@@ -40,8 +39,8 @@ class Ship:
         """
         ship = 0
         while ship < 3:
-            ship_row = random.randint(1, 5)
-            ship_col = random.randint(1, 5)
+            ship_row = random.randint(0, 4)
+            ship_col = random.randint(0, 4)
             ship_coords = [ship_row, ship_col]
             SHIP_PLACEMENT.append(ship_coords)
             ship += 1
