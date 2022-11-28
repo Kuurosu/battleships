@@ -1,6 +1,9 @@
 # Import random
 import random
 
+
+print("\nWelcome to Battleship!")
+
 # Implement board
 # The board will be generated automatically in a 5x5 layout. 
 class Board:
@@ -82,7 +85,7 @@ def run_game():
     while turns > 0:
         Board.play_board(user_board)
         # Uncomment the line below to show the computers board
-        Board.play_board(computer_board)
+        # Board.play_board(computer_board)
 
         # Gets the users guess
         user_row_input, user_col_input = Ship.get_user_guess(object)
@@ -112,7 +115,6 @@ def run_game():
                 print("\nYou have run out of turns and been overwhelmed by your defeat.")
                 print("\nYou lose.\n")
                 break
-
 
 
 run_game()
