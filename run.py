@@ -57,31 +57,22 @@ class Ship:
         """
         ship = 0
         while ship < 3:
-            # try:
-                # print("\nWhere would you like your first ship?")
-                # self.user_ship_one_col = input("\nChoose a column from A-E: ").upper().strip()
-                # if self.user_ship_one_col not in "ABCDE":
-                #     print("It needs to be a letter within A-E")
-                #     return Ship.user_ship_input(self)
-                # self.user_ship_one_row = int(input("Type a number between 1-5: "))
-                # self.user_ship_one_row - 1
-                # self.user_ship_col_row = Board.letter_to_number()[self.user_ship_one_col]
-                # self.board[self.user_ship_one_col][self.user_ship_one_row] = "@"
-                # return self.board
-            print("\nWhere would you like your first ship?")
-            self.row = random.randint(0, 4) 
-            self.col = input("Choose a column from A-E: ").upper().strip()
-            if self.col not in "ABCDE":
-                print("It needs to be a letter within A-E")
-            self.col_one = Board.letter_to_number()[self.col]
-            while self.board[self.row][self.col_one] == "@":
-                print("You've already chosen that coordinate")
-            self.board[self.row][self.col_one] = "@"
+            try:
+                print("\nWhere would you like your first ship?")
+                self.col = input("Choose a column from A-E: ").upper().strip()
+                if self.col not in "ABCDE":
+                    print("\nIt needs to be a letter within A-E")
+                self.col_one = Board.letter_to_number()[self.col]
+                self.row = int(input("Choose a row from 1-5: "))
+                while self.board[self.row][self.col_one] == "@":
+                    print("You've already chosen that coordinate")
+                self.board[self.row][self.col_one] = "@"
+            except ValueError and KeyError:
+                print("\nNot a valid coordinate. Please try again.")
+                return Ship.user_ship_input(self)
             ship += 1
         return self.board
-            # except ValueError and KeyError:
-            #     print("Not a valid coordinate. Please try again.")
-            #     return Ship.user_ship_input(self)
+            
 
     
     def get_user_guess(self):
@@ -96,6 +87,9 @@ class Ship:
                 print("It needs to be a letter within A-E")
                 return Ship.get_user_guess(self)
             user_row = int(input("Type a number between 1-5: "))
+            if user_row < 1 or user_row > 5:
+                print("Row must be within 1 and 5")
+                return Ship.get_user_guess(self)
             return user_row - 1, Board.letter_to_number()[user_column]
         except ValueError and KeyError:
             print("Not a valid coordinate. Please try again.")
@@ -131,7 +125,7 @@ def run_game():
     computer_board = Board([[" "] * 5 for i in range(5)])
     user_board = Board([[" "] * 5 for i in range(5)])
     Ship.computer_ships(computer_board)
-    Ship.user_ship_input(user_board)
+    # Ship.user_ship_input(user_board)
 
     turns = 10
     while turns > 0:
