@@ -107,5 +107,12 @@ def run_game():
             print(f"\nCongratulations! You've wiped out all of the enemy ships!")
             break
 
+        else:
+            if turns == 0:
+                print("\nYou have run out of turns and been overwhelmed by your defeat.")
+                print("\nYou lose.\n")
+                break
+
+
 
 run_game()
