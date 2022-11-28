@@ -60,8 +60,16 @@ SHIP_PLACEMENT = []
 
 # Implement new game
 def run_game():
+    """
+    Begins loading the players board on screen and generates a computer board
+    in the background which the user will be guessing from.
+    """
     computer_board = Board([["~"] * 5 for i in range(5)])
+    user_board = Board([["~"] * 5 for i in range(5)])
     Ship.computer_ships(computer_board)
-    Board.play_board(computer_board)
+    Board.play_board(user_board)
+
+    user_row_input, user_col_input = Ship.get_user_guess(object)
+    print(user_row_input, user_col_input)
     
 run_game()
