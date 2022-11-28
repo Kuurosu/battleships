@@ -3,6 +3,8 @@ import random
 
 
 print("\nWelcome to Battleship!")
+print("The aim is to guess where the opponent has hidden their ships.")
+print("You choose the column by typing the letter of the column you'd like, and the row by the number. Then hit enter when you're ready to fire.")
 
 # Implement board
 # The board will be generated automatically in a 5x5 layout. 
@@ -56,8 +58,8 @@ class Ship:
         guess is made.
         """
         try:
-            user_row = int(input("\nType a number between 1-5: "))
-            user_column = input("Type a letter from A-E: ").upper().strip()
+            user_column = input("\nType a letter from A-E: ").upper().strip()
+            user_row = int(input("Type a number between 1-5: "))
             return user_row - 1, Board.letter_to_number()[user_column]
         except ValueError and KeyError:
             print("Not a valid coordinate. Please try again.")
@@ -103,7 +105,7 @@ def run_game():
             print("\nYou missed!")
             user_board.board[user_row_input][user_col_input] = "-"
             turns -= 1
-            print(f"You have {turns} remaining!")
+            print(f"You have {turns} shots remaining!")
 
         # Check if all the ships have been hit
         if Ship.all_ships_hit(user_board) == 3:
