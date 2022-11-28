@@ -63,6 +63,6 @@ SHIP_PLACEMENT = []
 def run_game():
     computer_board = Board([["~"] * 5 for i in range(5)])
     Ship.computer_ships(computer_board)
-
+    Board.play_board(computer_board)
     
 run_game()
