@@ -60,6 +60,14 @@ class Ship:
             print("Not a valid coordinate. Please try again.")
             return Ship.get_user_guess(self)
 
+    def all_ships_hit(self):
+        ships_hit = 0
+        for row in self.board:
+            for col in row:
+                if col == "O":
+                    ships_hit += 1
+        return ships_hit
+
 # Implement new game
 def run_game():
     """
@@ -79,9 +87,14 @@ def run_game():
         # Gets the users guess
         user_row_input, user_col_input = Ship.get_user_guess(object)
 
+        # Checks to see if user has already guessed the position
+        if user_board.board[user_row_input][user_col_input] == "O" or user_board.board[user_row_input][user_col_input] == "-":
+            print("You've already guessed that coordinate. Try again.")
+            user_row_input, user_col_input = Ship.get_user_guess(object)
+
         # Checks the user input to see if a ship was hit
         if computer_board.board[user_row_input][user_col_input] == "X":
-            print("You sunk a battleship!")
+            print("\nYou sunk a battleship!")
             user_board.board[user_row_input][user_col_input] = "O"
         else:
             print("\nYou missed!")
@@ -89,6 +102,10 @@ def run_game():
             turns -= 1
             print(f"You have {turns} remaining!")
 
-        # Checks to see if user has already guessed the position
+        # Check if all the ships have been hit
+        if Ship.all_ships_hit(user_board) == 3:
+            print(f"\nCongratulations! You've wiped out all of the enemy ships!")
+            break
+
 
 run_game()
