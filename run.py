@@ -37,15 +37,6 @@ class Ship:
         """
         Randomly places the computers ships on the map within the game area.
         """
-        # ship = 0
-        # while ship < 3:
-        #     ship_row = random.randint(0, 4)
-        #     ship_col = random.randint(0, 4)
-        #     ship_coords = [ship_row, ship_col]
-        #     SHIP_PLACEMENT.append(ship_coords)
-        #     ship += 1
-        # print(SHIP_PLACEMENT)
-        # return SHIP_PLACEMENT
         for i in range(3):
             self.row, self.col = random.randint(0, 4), random.randint(0, 4)
             while self.board[self.row][self.col] == "X":
@@ -62,8 +53,6 @@ class Ship:
             print("Not a valid coordinate. Please try again.")
             return Ship.get_user_guess(self)
 
-SHIP_PLACEMENT = []
-
 # Implement new game
 def run_game():
     """
@@ -74,6 +63,7 @@ def run_game():
     user_board = Board([["~"] * 5 for i in range(5)])
     Ship.computer_ships(computer_board)
     Board.play_board(user_board)
+    # Uncomment the line below to show the computers board
     Board.play_board(computer_board)
 
     # user_row_input, user_col_input = Ship.get_user_guess(object)
