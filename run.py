@@ -15,7 +15,7 @@ class Board:
         Creates the board. Works with the run_game function to work out how
         many rows it needs to connect with. 
         """
-        print("  A B C D E")
+        print("\n  A B C D E")
         row_number = 1
         for row in self.board:
             print("%d|%s|" % (row_number, "|".join(row)))
@@ -53,7 +53,7 @@ class Ship:
         guess is made.
         """
         try:
-            user_row = int(input("Type a number between 1-5: "))
+            user_row = int(input("\nType a number between 1-5: "))
             user_column = input("Type a letter from A-E: ").upper().strip()
             return user_row - 1, Board.letter_to_number()[user_column]
         except ValueError and KeyError:
@@ -78,11 +78,17 @@ def run_game():
 
         # Gets the users guess
         user_row_input, user_col_input = Ship.get_user_guess(object)
-        print(user_row_input, user_col_input)
 
         # Checks the user input to see if a ship was hit
         if computer_board.board[user_row_input][user_col_input] == "X":
             print("You sunk a battleship!")
-            user_board.board[user_row_input][user_col_input] = "X"
+            user_board.board[user_row_input][user_col_input] = "O"
+        else:
+            print("\nYou missed!")
+            user_board.board[user_row_input][user_col_input] = "-"
+            turns -= 1
+            print(f"You have {turns} remaining!")
+
+        # Checks to see if user has already guessed the position
 
 run_game()
