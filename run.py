@@ -59,13 +59,24 @@ class Ship:
         """
         try:
             user_column = input("\nType a letter from A-E: ").upper().strip()
+            if user_column not in "ABCDE":
+                print("It needs to be a letter within A-E")
+                return Ship.get_user_guess(self)
             user_row = int(input("Type a number between 1-5: "))
             return user_row - 1, Board.letter_to_number()[user_column]
         except ValueError and KeyError:
             print("Not a valid coordinate. Please try again.")
             return Ship.get_user_guess(self)
 
+    def get_computer_guess(self):
+        self.row, self.col = random.randint(0, 4), random.randint(0, 4)
+        self.board[self.row][self.col] = "X"
+        return self.board
+
     def all_ships_hit(self):
+        """
+        Counts the amount of ships hit on the board and increments it by one
+        """
         ships_hit = 0
         for row in self.board:
             for col in row:
