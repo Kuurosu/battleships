@@ -78,7 +78,7 @@ def run_game():
     in the background which the user will be guessing from.
     """
     computer_board = Board([[" "] * 5 for i in range(5)])
-    user_board = Board([["~"] * 5 for i in range(5)])
+    user_board = Board([[" "] * 5 for i in range(5)])
     Ship.computer_ships(computer_board)
 
     turns = 10
