@@ -50,6 +50,39 @@ class Ship:
                 self.row, self.col = random.randint(0, 4), random.randint(0, 4)
             self.board[self.row][self.col] = "X"
         return self.board
+
+    def user_ship_input(self):
+        """
+        Requests the user to enter the coordinates of where they would like to place their ships.
+        """
+        ship = 0
+        while ship < 3:
+            # try:
+                # print("\nWhere would you like your first ship?")
+                # self.user_ship_one_col = input("\nChoose a column from A-E: ").upper().strip()
+                # if self.user_ship_one_col not in "ABCDE":
+                #     print("It needs to be a letter within A-E")
+                #     return Ship.user_ship_input(self)
+                # self.user_ship_one_row = int(input("Type a number between 1-5: "))
+                # self.user_ship_one_row - 1
+                # self.user_ship_col_row = Board.letter_to_number()[self.user_ship_one_col]
+                # self.board[self.user_ship_one_col][self.user_ship_one_row] = "@"
+                # return self.board
+            print("\nWhere would you like your first ship?")
+            self.row = random.randint(0, 4) 
+            self.col = input("Choose a column from A-E: ").upper().strip()
+            if self.col not in "ABCDE":
+                print("It needs to be a letter within A-E")
+            self.col_one = Board.letter_to_number()[self.col]
+            while self.board[self.row][self.col_one] == "@":
+                print("You've already chosen that coordinate")
+            self.board[self.row][self.col_one] = "@"
+            ship += 1
+        return self.board
+            # except ValueError and KeyError:
+            #     print("Not a valid coordinate. Please try again.")
+            #     return Ship.user_ship_input(self)
+
     
     def get_user_guess(self):
         """
@@ -69,7 +102,12 @@ class Ship:
             return Ship.get_user_guess(self)
 
     def get_computer_guess(self):
+        """
+        Generates a random spot for the computer to shoot at the players board.
+        """
         self.row, self.col = random.randint(0, 4), random.randint(0, 4)
+        while self.board[self.row][self.col] == "X":
+                self.row, self.col = random.randint(0, 4), random.randint(0, 4)
         self.board[self.row][self.col] = "X"
         return self.board
 
@@ -93,6 +131,7 @@ def run_game():
     computer_board = Board([[" "] * 5 for i in range(5)])
     user_board = Board([[" "] * 5 for i in range(5)])
     Ship.computer_ships(computer_board)
+    Ship.user_ship_input(user_board)
 
     turns = 10
     while turns > 0:
@@ -102,6 +141,9 @@ def run_game():
 
         # Gets the users guess
         user_row_input, user_col_input = Ship.get_user_guess(object)
+
+        # Working on adding computer choice to shoot the players board
+        # Ship.get_computer_guess(user_board)
 
         # Checks to see if user has already guessed the position
         if user_board.board[user_row_input][user_col_input] == "O" or user_board.board[user_row_input][user_col_input] == "-":
