@@ -114,7 +114,7 @@ def run_game():
 
         else:
             if turns == 0:
-                print("\nYou have run out of turns and been overwhelmed by your defeat.")
+                print("\nYou have run out of ammo and been overwhelmed by your defeat.")
                 print("\nYou lose.\n")
                 break
 
