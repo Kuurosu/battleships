@@ -122,14 +122,12 @@ class Ship:
         """
         Count starts at 3 for all ships. When reaching 0 the player loses.
         """
-        player_ships = 0
+        not_hit = 25
         for row in self.board:
             for col in row:
                 if col == "?":
-                    player_ships += 1
-                if col != "?":
-                    player_ships -= 1
-        return player_ships
+                    not_hit -= 1
+        return not_hit
 
 # Implement new game
 def run_game():
@@ -143,7 +141,7 @@ def run_game():
     Ship.computer_ships(computer_board)
     Ship.user_ship_input(user_board)
 
-    turns = 10
+    turns = 25
     while turns > 0:
         Board.play_board(guess_board)
         Board.play_board(user_board)
@@ -176,7 +174,8 @@ def run_game():
             print("\nYou Win!\n")
             break
 
-        if Ship.all_player_ships_hit(user_board) == 3:
+        if Ship.all_player_ships_hit(user_board) == 25:
+            Board.play_board(user_board)
             print("\nAll your ships have been sunk!")
             print("\nYou lose.")
             break
