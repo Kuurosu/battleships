@@ -136,13 +136,10 @@ def run_game():
         Board.play_board(user_board)
         Ship.get_computer_guess(user_board)
         # Uncomment the line below to show the computers board
-        # Board.play_board(computer_board)
+        Board.play_board(computer_board)
 
         # Gets the users guess
         user_row_input, user_col_input = Ship.get_user_guess(object)
-
-        # Working on adding computer choice to shoot the players board
-        # Ship.get_computer_guess(user_board)
 
         # Checks to see if user has already guessed the position
         if guess_board.board[user_row_input][user_col_input] == "O" or guess_board.board[user_row_input][user_col_input] == "-":
@@ -151,7 +148,7 @@ def run_game():
 
         # Checks the user input to see if a ship was hit
         if computer_board.board[user_row_input][user_col_input] == "X":
-            print("\nYou sunk a battleship!")
+            print("\nYou sunk an enemy battleship!")
             guess_board.board[user_row_input][user_col_input] = "O"
         else:
             print("\nYou missed!")
@@ -159,15 +156,22 @@ def run_game():
             turns -= 1
             print(f"You have {turns} shots remaining!")
 
-        # Check if all the ships have been hit
-        if Ship.all_ships_hit(user_board) == 3:
+        # Check if all the enemy ships have been hit
+        if Ship.all_ships_hit(guess_board) == 3:
+            Board.play_board(guess_board)
             print("\nCongratulations! You've wiped out all of the enemy ships!")
             print("\nYou Win!\n")
             break
 
+        if Ship.all_ships_hit(user_board) == 3:
+            print("\nAll your ships have been sunk!")
+            print("\nYou lose.")
+            break
+
+        # If the player runs out of turns. It ends in a stalemate. 
         else:
             if turns == 0:
-                print("\nA valiant effort from both sides. But ammo and rations are required for the crew. Both sides retreat to resupply for another day.")
+                print("\nA valiant effort from both sides. But ammo is depleted and rations are required for the crew. Both sides retreat to resupply for another day.")
                 break
 
 
