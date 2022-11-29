@@ -59,13 +59,13 @@ class Ship:
                 self.col = input("\nChoose a column from A-E: ").upper().strip()
                 if self.col not in "ABCDE":
                     print("\nIt needs to be a letter within A-E")
-                self.col_one = Board.letter_to_number()[self.col]
+                self.col_convert = Board.letter_to_number()[self.col]
                 self.row = int(input("Choose a row from 1-5: "))
-                self.row_one = self.row - 1
-                while self.board[self.row_one][self.col_one] == "?":
+                self.row_convert = self.row - 1
+                while self.board[self.row_convert][self.col_convert] == "?":
                     print("You've already chosen that coordinate")
                     return Ship.user_ship_input(self)
-                self.board[self.row_one][self.col_one] = "?"
+                self.board[self.row_convert][self.col_convert] = "?"
             except ValueError or KeyError:
                 print("\nNot a valid coordinate. Please try again.")
                 return Ship.user_ship_input(self)
@@ -153,7 +153,7 @@ def run_game():
     while turns > 0:
         Board.play_board(guess_board)
         Board.play_board(user_board)
-        Ship.get_computer_guess(user_board)
+
         # Uncomment the line below to show the computers board
         # Board.play_board(computer_board)
 
@@ -164,6 +164,8 @@ def run_game():
         if guess_board.board[user_row_input][user_col_input] == "O" or guess_board.board[user_row_input][user_col_input] == "-":
             print("You've already guessed that coordinate. Try again.")
             user_row_input, user_col_input = Ship.get_user_guess(object)
+
+        Ship.get_computer_guess(user_board)
 
         # Checks the user input to see if a ship was hit
         if computer_board.board[user_row_input][user_col_input] == "X":
