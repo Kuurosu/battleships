@@ -69,7 +69,7 @@ class Ship:
                     print("You've already chosen that coordinate")
                     return Ship.user_ship_input(self)
                 self.board[self.row_one][self.col_one] = "?"
-            except ValueError and KeyError:
+            except ValueError or KeyError:
                 print("\nNot a valid coordinate. Please try again.")
                 return Ship.user_ship_input(self)
             ship += 1
@@ -93,7 +93,7 @@ class Ship:
                 print("Row must be within 1 and 5")
                 return Ship.get_user_guess(self)
             return user_row - 1, Board.letter_to_number()[user_column]
-        except ValueError and KeyError:
+        except ValueError or KeyError:
             print("Not a valid coordinate. Please try again.")
             return Ship.get_user_guess(self)
 
@@ -117,6 +117,19 @@ class Ship:
                 if col == "O":
                     ships_hit += 1
         return ships_hit
+
+    def all_player_ships_hit(self):
+        """
+        Count starts at 3 for all ships. When reaching 0 the player loses.
+        """
+        player_ships = 0
+        for row in self.board:
+            for col in row:
+                if col == "?":
+                    player_ships += 1
+                if col != "?":
+                    player_ships -= 1
+        return player_ships
 
 # Implement new game
 def run_game():
@@ -163,7 +176,7 @@ def run_game():
             print("\nYou Win!\n")
             break
 
-        if Ship.all_ships_hit(user_board) == 3:
+        if Ship.all_player_ships_hit(user_board) == 3:
             print("\nAll your ships have been sunk!")
             print("\nYou lose.")
             break
