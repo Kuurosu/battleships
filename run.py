@@ -3,11 +3,10 @@ import random
 
 
 print("\nWelcome to Battleship!")
-print("The aim is to guess where the opponent has hidden their ships.")
-print("You choose the column by typing the letter of the column you'd like, and the row by the number. Then hit enter when you're ready to fire.")
+print("\nThe aim is to guess where the opponent has hidden their ships.")
+print("\nYou choose the column by typing the letter of the column you'd like, and the row by the number. Then hit enter when you're ready to fire.")
 
-# Implement board
-# The board will be generated automatically in a 5x5 layout. 
+
 class Board:
     """
     Creates a class of Board with a width and height of 5.
@@ -33,9 +32,7 @@ class Board:
         list_of_letter = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4}
         return list_of_letter
 
-# Implement random int
-# A function will be created to handle the computer's choice for the 
-# integers it will choose. 
+
 class Ship:
     def __init__(self, board):
         self.board = board
@@ -141,7 +138,6 @@ class Ship:
         return hit
 
 
-# Implement new game
 def run_game():
     """
     Begins loading the players board on screen and generates a computer board
@@ -159,7 +155,7 @@ def run_game():
         Board.play_board(user_board)
         Ship.get_computer_guess(user_board)
         # Uncomment the line below to show the computers board
-        Board.play_board(computer_board)
+        # Board.play_board(computer_board)
 
         # Gets the users guess
         user_row_input, user_col_input = Ship.get_user_guess(object)
@@ -179,10 +175,12 @@ def run_game():
             turns -= 1
             print(f"\nYou have {turns} shots remaining!")
 
+        # Runs when one of the players ships have been hit
         if Ship.if_hit(user_board) == 2:
             print("\nOne of your ships have been sunk!")
             continue
-
+        
+        # Runs when two of the players ships have been hit
         if Ship.if_hit(user_board) == 1:
             print("\nTwo of your ships have now been sunk! Be careful!")
             continue
