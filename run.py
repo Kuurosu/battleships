@@ -129,6 +129,18 @@ class Ship:
                     not_hit -= 1
         return not_hit
 
+    def if_hit(self):
+        """
+        Counts when the player has been hit
+        """
+        hit = 0
+        for row in self.board:
+            for col in row:
+                if col == "?":
+                    hit += 1
+        return hit
+
+
 # Implement new game
 def run_game():
     """
@@ -165,7 +177,15 @@ def run_game():
             print("\nYou missed!")
             guess_board.board[user_row_input][user_col_input] = "-"
             turns -= 1
-            print(f"You have {turns} shots remaining!")
+            print(f"\nYou have {turns} shots remaining!")
+
+        if Ship.if_hit(user_board) == 2:
+            print("\nOne of your ships have been sunk!")
+            continue
+
+        if Ship.if_hit(user_board) == 1:
+            print("\nTwo of your ships have now been sunk! Be careful!")
+            continue
 
         # Check if all the enemy ships have been hit
         if Ship.all_ships_hit(guess_board) == 3:
@@ -174,10 +194,11 @@ def run_game():
             print("\nYou Win!\n")
             break
 
+        # Lose condition for when all player ships have been sunk
         if Ship.all_player_ships_hit(user_board) == 25:
             Board.play_board(user_board)
             print("\nAll your ships have been sunk!")
-            print("\nYou lose.")
+            print("\nYou lose.\n")
             break
 
         # If the player runs out of turns. It ends in a stalemate. 
