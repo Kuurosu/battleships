@@ -81,11 +81,11 @@ class Ship:
         guess is made.
         """
         try:
-            user_column = input("\nType a letter from A-E: ").upper().strip()
+            user_column = input("\nChoose a column from A-E: ").upper().strip()
             if user_column not in "ABCDE":
                 print("It needs to be a letter within A-E")
                 return Ship.get_user_guess(self)
-            user_row = int(input("Type a number between 1-5: "))
+            user_row = int(input("Choose a row between 1-5: "))
             if user_row < 1 or user_row > 5:
                 print("Row must be within 1 and 5")
                 return Ship.get_user_guess(self)
@@ -154,7 +154,8 @@ def run_game():
         Board.play_board(guess_board)
         Board.play_board(user_board)
 
-        # Uncomment the line below to show the computers board
+        # Uncomment the line below to show the computers board with their boat
+        # placement.
         # Board.play_board(computer_board)
 
         # Gets the users guess
