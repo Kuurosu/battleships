@@ -59,8 +59,12 @@ class Ship:
                 self.col = input("\nChoose a column from A-E: ").upper().strip()
                 if self.col not in "ABCDE":
                     print("\nIt needs to be a letter within A-E")
+                    return Ship.user_ship_input(self)
                 self.col_convert = Board.letter_to_number()[self.col]
                 self.row = int(input("Choose a row from 1-5: "))
+                if self.row > 5 or self.row < 1:
+                    print("\nThe row needs to be between 1-5")
+                    return Ship.user_ship_input(self)
                 self.row_convert = self.row - 1
                 while self.board[self.row_convert][self.col_convert] == "?":
                     print("You've already chosen that coordinate")
