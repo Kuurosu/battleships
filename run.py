@@ -155,7 +155,7 @@ def run_game():
         print("\n---------------------------")
         print("\n  Your guessing board")
         Board.play_board(guess_board)
-        print("---------------------------")
+        print("\n---------------------------")
         print("\n  Your board")
         Board.play_board(user_board)
         print("\n---------------------------")
