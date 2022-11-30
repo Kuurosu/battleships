@@ -1,5 +1,14 @@
 import random
 
+TURNS = 25
+BOARD_WIDTH = 5
+BOARD_HEIGHT = BOARD_WIDTH
+LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+LETTERS_TO_NUMBER_MAP = dict()
+
+for index in range(len(LETTERS)):
+    LETTERS_TO_NUMBER_MAP[LETTERS[index]] = index
+
 class Board:
     """
     Creates a class of Board with a width and height of 5.
@@ -23,7 +32,7 @@ class Board:
         Converts the letter to a number and returns it.
         """
         list_of_letter = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4}
-        return list_of_letter
+        return LETTERS_TO_NUMBER_MAP
 
 
 class Ship:
@@ -150,7 +159,7 @@ def run_game():
     Ship.computer_ships(computer_board)
     Ship.user_ship_input(user_board)
 
-    turns = 25
+    turns = TURNS
     while turns > 0:
         print("\n---------------------------")
         print("\n  Your guessing board")
