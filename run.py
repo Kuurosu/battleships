@@ -72,8 +72,6 @@ class Ship:
             ship += 1
         return self.board
             
-
-    
     def get_user_guess(self):
         """
         This inputs the user for their guesses of where the ship could be.
@@ -207,6 +205,5 @@ def run_game():
             if turns == 0:
                 print("\nA valiant effort from both sides. But ammo is depleted and rations are required for the crew. Both sides retreat to resupply for another day.")
                 break
-
 
 run_game()
