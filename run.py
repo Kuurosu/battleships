@@ -1,4 +1,3 @@
-# Import random
 import random
 
 
@@ -153,13 +152,13 @@ def run_game():
 
     turns = 25
     while turns > 0:
-        print("---------------------------")
+        print("\n---------------------------")
         print("\n  Your guessing board")
         Board.play_board(guess_board)
         print("---------------------------")
         print("\n  Your board")
         Board.play_board(user_board)
-        print("---------------------------")
+        print("\n---------------------------")
 
         # Uncomment the line below to show the computers board with their boat
         # placement.
