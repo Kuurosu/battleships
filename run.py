@@ -43,12 +43,7 @@ class Board:
                 self.row, self.col = random.randint(0, 4), random.randint(0, 4)
             self.board[self.row][self.col] = "X"
         return self.board
-
-
-class Ship:
-    def __init__(self, board):
-        self.board = board
-
+    
     def user_ship_input(self):
         """
         Requests the user to enter the coordinates of where they would like to place their ships.
@@ -76,7 +71,7 @@ class Ship:
                 continue
             ship += 1
         return self.board
-            
+    
     def get_user_guess(self):
         """
         This inputs the user for their guesses of where the ship could be.
@@ -110,7 +105,7 @@ class Ship:
                 self.row, self.col = random.randint(0, 4), random.randint(0, 4)
         self.board[self.row][self.col] = "X"
         return self.board
-
+    
     def all_ships_hit(self):
         """
         Counts the amount of ships hit on the board and increments it by one
@@ -121,7 +116,7 @@ class Ship:
                 if col == "O":
                     ships_hit += 1
         return ships_hit
-
+    
     def all_player_ships_hit(self):
         """
         Count starts at 3 for all ships. When reaching 0 the player loses.
@@ -132,7 +127,7 @@ class Ship:
                 if col == "?":
                     not_hit -= 1
         return not_hit
-
+    
     def if_hit(self):
         """
         Counts when the player has been hit
@@ -142,7 +137,7 @@ class Ship:
             for col in row:
                 if col == "?":
                     hit += 1
-        return hit
+        return hit 
 
 def intro_game():
     print("\nWelcome to Battleship!")
@@ -160,7 +155,7 @@ def run_game():
     user_board = Board()
     guess_board = Board()
     Board.computer_ships(computer_board)
-    Ship.user_ship_input(user_board)
+    Board.user_ship_input(user_board)
 
     turns = TURNS
     while turns > 0:
@@ -177,14 +172,14 @@ def run_game():
         # Board.play_board(computer_board)
 
         # Gets the users guess
-        user_row_input, user_col_input = Ship.get_user_guess(object)
+        user_row_input, user_col_input = Board.get_user_guess(object)
 
         # Checks to see if user has already guessed the position
         if guess_board.board[user_row_input][user_col_input] == "O" or guess_board.board[user_row_input][user_col_input] == "-":
             print("You've already guessed that coordinate. Try again.")
-            user_row_input, user_col_input = Ship.get_user_guess(object)
+            user_row_input, user_col_input = Board.get_user_guess(object)
 
-        Ship.get_computer_guess(user_board)
+        Board.get_computer_guess(user_board)
 
         # Checks the user input to see if a ship was hit
         if computer_board.board[user_row_input][user_col_input] == "X":
@@ -197,24 +192,24 @@ def run_game():
             print(f"\nYou have {turns} shots remaining!")
 
         # Runs when one of the players ships have been hit
-        if Ship.if_hit(user_board) == 2:
+        if Board.if_hit(user_board) == 2:
             print("\nOne of your ships have been sunk!")
             continue
         
         # Runs when two of the players ships have been hit
-        if Ship.if_hit(user_board) == 1:
+        if Board.if_hit(user_board) == 1:
             print("\nTwo of your ships have now been sunk! Be careful!")
             continue
 
         # Check if all the enemy ships have been hit
-        if Ship.all_ships_hit(guess_board) == 3:
+        if Board.all_ships_hit(guess_board) == 3:
             Board.play_board(guess_board)
             print("\nCongratulations! You've wiped out all of the enemy ships!")
             print("\nYou Win!\n")
             break
 
         # Lose condition for when all player ships have been sunk
-        if Ship.all_player_ships_hit(user_board) == 25:
+        if Board.all_player_ships_hit(user_board) == 25:
             Board.play_board(user_board)
             print("\nAll your ships have been sunk!")
             print("\nYou lose.\n")
