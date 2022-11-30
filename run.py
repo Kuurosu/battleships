@@ -219,7 +219,9 @@ def run_game():
         # If the player runs out of turns. It ends in a stalemate. 
         else:
             if turns == 0:
-                print("\nA valiant effort from both sides. But ammo is depleted and rations are required for the crew. Both sides retreat to resupply for another day.")
+                print("\nA valiant effort from both sides. But ammo is"
+                "depleted and rations are required for the crew. Both "
+                "sides retreat to resupply for another day.")
                 break
 
 intro_game()
