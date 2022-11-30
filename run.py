@@ -13,8 +13,8 @@ class Board:
     """
     Creates a class of Board with a width and height of 5.
     """
-    def __init__(self, board):
-        self.board = board
+    def __init__(self):
+        self.board = [[" "] * BOARD_HEIGHT for i in range(BOARD_WIDTH)]
     
     def play_board(self):
         """
@@ -31,7 +31,6 @@ class Board:
         """
         Converts the letter to a number and returns it.
         """
-        list_of_letter = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4}
         return LETTERS_TO_NUMBER_MAP
 
 
@@ -153,9 +152,9 @@ def run_game():
     Begins loading the players board on screen and generates a computer board
     in the background which the user will be guessing from.
     """
-    computer_board = Board([[" "] * 5 for i in range(5)])
-    user_board = Board([[" "] * 5 for i in range(5)])
-    guess_board = Board([[" "] * 5 for i in range(5)])
+    computer_board = Board()
+    user_board = Board()
+    guess_board = Board()
     Ship.computer_ships(computer_board)
     Ship.user_ship_input(user_board)
 
