@@ -85,15 +85,15 @@ class Ship:
         try:
             user_column = input("\nChoose a column from A-E: ").upper().strip()
             if user_column not in "ABCDE":
-                print("It needs to be a letter within A-E")
+                print("\nIt needs to be a letter within A-E")
                 return Ship.get_user_guess(self)
             user_row = int(input("Choose a row between 1-5: "))
             if user_row < 1 or user_row > 5:
-                print("Row must be within 1 and 5")
+                print("\nRow must be within 1 and 5")
                 return Ship.get_user_guess(self)
             return user_row - 1, Board.letter_to_number()[user_column]
         except ValueError or KeyError:
-            print("Not a valid coordinate. Please try again.")
+            print("\nNot a valid coordinate. Please try again.")
             return Ship.get_user_guess(self)
 
     def get_computer_guess(self):
@@ -153,8 +153,13 @@ def run_game():
 
     turns = 25
     while turns > 0:
+        print("---------------------------")
+        print("\n  Your guessing board")
         Board.play_board(guess_board)
+        print("---------------------------")
+        print("\n  Your board")
         Board.play_board(user_board)
+        print("---------------------------")
 
         # Uncomment the line below to show the computers board with their boat
         # placement.
