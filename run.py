@@ -33,11 +33,6 @@ class Board:
         """
         return LETTERS_TO_NUMBER_MAP
 
-
-class Ship:
-    def __init__(self, board):
-        self.board = board
-
     def computer_ships(self):
         """
         Randomly places the computers ships on the map within the game area.
@@ -48,6 +43,11 @@ class Ship:
                 self.row, self.col = random.randint(0, 4), random.randint(0, 4)
             self.board[self.row][self.col] = "X"
         return self.board
+
+
+class Ship:
+    def __init__(self, board):
+        self.board = board
 
     def user_ship_input(self):
         """
@@ -92,8 +92,12 @@ class Ship:
             if user_row < 1 or user_row > 5:
                 print("\nRow must be within 1 and 5")
                 return Ship.get_user_guess(self)
-            return user_row - 1, Board.letter_to_number()[user_column]
         except ValueError or KeyError:
+            print("\nNot a valid coordinate. Please try again.")
+            return Ship.get_user_guess(self)
+        try:
+            return user_row - 1, Board.letter_to_number()[user_column]
+        except KeyError:
             print("\nNot a valid coordinate. Please try again.")
             return Ship.get_user_guess(self)
 
@@ -144,8 +148,8 @@ def intro_game():
     print("\nWelcome to Battleship!")
     print("\nThe aim is to guess where the opponent has hidden their ships.")
     print("\nYou choose the column by typing the letter of the column you'd"
-        "like, and the row by the number. Then hit enter when you're ready to"
-        "fire.")
+        " like, and the row by the number. Then hit enter when you're ready to"
+        " fire.")
 
 def run_game():
     """
@@ -155,7 +159,7 @@ def run_game():
     computer_board = Board()
     user_board = Board()
     guess_board = Board()
-    Ship.computer_ships(computer_board)
+    Board.computer_ships(computer_board)
     Ship.user_ship_input(user_board)
 
     turns = TURNS
