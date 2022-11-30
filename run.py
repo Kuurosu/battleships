@@ -11,7 +11,8 @@ for index in range(len(LETTERS)):
 
 class Board:
     """
-    Creates a class of Board with a width and height of 5.
+    Creates a class of Board with a width and height of the constants made
+    above.
     """
     def __init__(self):
         self.board = [[" "] * BOARD_HEIGHT for i in range(BOARD_WIDTH)]
@@ -82,19 +83,19 @@ class Board:
             user_column = input("\nChoose a column from A-E: ").upper().strip()
             if user_column not in "ABCDE":
                 print("\nIt needs to be a letter within A-E")
-                return Ship.get_user_guess(self)
+                return Board.get_user_guess(self)
             user_row = int(input("Choose a row between 1-5: "))
             if user_row < 1 or user_row > 5:
                 print("\nRow must be within 1 and 5")
-                return Ship.get_user_guess(self)
+                return Board.get_user_guess(self)
         except ValueError or KeyError:
             print("\nNot a valid coordinate. Please try again.")
-            return Ship.get_user_guess(self)
+            return Board.get_user_guess(self)
         try:
             return user_row - 1, Board.letter_to_number()[user_column]
         except KeyError:
             print("\nNot a valid coordinate. Please try again.")
-            return Ship.get_user_guess(self)
+            return Board.get_user_guess(self)
 
     def get_computer_guess(self):
         """
