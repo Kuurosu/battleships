@@ -1,11 +1,5 @@
 import random
 
-
-print("\nWelcome to Battleship!")
-print("\nThe aim is to guess where the opponent has hidden their ships.")
-print("\nYou choose the column by typing the letter of the column you'd like, and the row by the number. Then hit enter when you're ready to fire.")
-
-
 class Board:
     """
     Creates a class of Board with a width and height of 5.
@@ -138,6 +132,12 @@ class Ship:
                     hit += 1
         return hit
 
+def intro_game():
+    print("\nWelcome to Battleship!")
+    print("\nThe aim is to guess where the opponent has hidden their ships.")
+    print("\nYou choose the column by typing the letter of the column you'd"
+        "like, and the row by the number. Then hit enter when you're ready to"
+        "fire.")
 
 def run_game():
     """
@@ -214,4 +214,5 @@ def run_game():
                 print("\nA valiant effort from both sides. But ammo is depleted and rations are required for the crew. Both sides retreat to resupply for another day.")
                 break
 
+intro_game()
 run_game()
