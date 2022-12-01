@@ -112,9 +112,9 @@ class Board:
         Counts the amount of ships hit on the board and increments it by one
         """
         ships_hit = 0
-        for row in self.board:
-            for col in row:
-                if col == "O":
+        for col in self.board:
+            for row in col:
+                if row == "O":
                     ships_hit += 1
         return ships_hit
     
@@ -170,7 +170,7 @@ def run_game():
 
         # Uncomment the line below to show the computers board with their boat
         # placement.
-        # Board.play_board(computer_board)
+        Board.play_board(computer_board)
 
         # Gets the users guess
         user_row_input, user_col_input = Board.get_user_guess(object)
