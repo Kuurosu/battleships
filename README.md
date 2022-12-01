@@ -26,7 +26,7 @@ They are able to again, choose a column and row to guess from. A miss will be sh
 ![Guess board](media/guess-board.png)
 ![Player board](media/player-board.png)
 
-If the player is able to hit all the enemy ships, there is a congratulations message to tell the player they have won.
+If the player is able to hit all the enemy ships, there is a congratulations message to tell the player they have won. It also shows the guess board above the message to show where all the enemy ships were.
 
 ![Win screen](media/win-board.png)
 
