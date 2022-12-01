@@ -19,8 +19,9 @@ class Board:
     
     def play_board(self):
         """
-        Creates the board. Works with the run_game function to work out how
-        many rows it needs to connect with. 
+        Creates the board with appropriate letters above that game board.
+        Also adds a | in between all the spots a guess can be placed for
+        readability. 
         """
         print("\n  A B C D E")
         row_number = 1
