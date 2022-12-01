@@ -170,7 +170,7 @@ def run_game():
 
         # Uncomment the line below to show the computers board with their boat
         # placement.
-        Board.play_board(computer_board)
+        # Board.play_board(computer_board)
 
         # Gets the users guess
         user_row_input, user_col_input = Board.get_user_guess(object)
