@@ -4,7 +4,7 @@
 
 ## Description
 
-I've designed this game to allow players to play the game Battleships against a computer which randomly decides its ship placement and guesses towards the player.
+I've designed this game to allow players to play the game Battleships against a computer which randomly decides its ship placement and guesses towards the players board. It also has prompts to allow the player to choose the column and row of where they would like to guess the computers ship.
 
 ### Overview
 
