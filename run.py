@@ -1,6 +1,6 @@
 import random
 
-TURNS = 25
+TURNS = 2
 BOARD_WIDTH = 5
 BOARD_HEIGHT = BOARD_WIDTH
 LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -232,8 +232,8 @@ def run_game():
         else:
             if turns == 0:
                 print("\nA valiant effort from both sides. But ammo is"
-                      "depleted and rations are required for the crew. Both "
-                      "sides retreat to resupply for another day.")
+                      " depleted and rations are required for the crew. Both"
+                      " sides retreat to resupply for another day.")
                 break
 
 
