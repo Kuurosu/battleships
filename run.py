@@ -143,10 +143,16 @@ class Board:
 
 def intro_game():
     print("\nWelcome to Battleship!")
-    print("\nThe aim is to guess where the opponent has hidden their ships.")
-    print("\nYou choose the column by typing the letter of the column you'd"
-        " like, and the row by the number. Then hit enter when you're ready to"
-        " fire.")
+    print("\nThe aim is to guess where the opponent has hidden their ships"
+        " and take them out!")
+    print("\nStart off by placing your ships within the play area. A-E for the"
+        " column, and 1-5 for the row.")
+    print("Once placed, you will see the your board on the bottom with '?'"
+        " represented as your ships. The top board is the computers and you"
+        " guess by using a column and row coordinate which is represented as"
+        " 'O' for a hit, and 'X' for a miss. On your side the computers shots"
+        " are represented as 'X' and will override your '?' to an 'X' when"
+        " hit.")
 
 def run_game():
     """
