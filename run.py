@@ -9,6 +9,7 @@ LETTERS_TO_NUMBER_MAP = dict()
 for index in range(len(LETTERS)):
     LETTERS_TO_NUMBER_MAP[LETTERS[index]] = index
 
+
 class Board:
     """
     Creates a class of Board with a width and height of the constants made
@@ -16,19 +17,19 @@ class Board:
     """
     def __init__(self):
         self.board = [[" "] * BOARD_HEIGHT for i in range(BOARD_WIDTH)]
-    
+
     def play_board(self):
         """
         Creates the board with appropriate letters above that game board.
         Also adds a | in between all the spots a guess can be placed for
-        readability. 
+        readability.
         """
         print("\n  A B C D E")
         row_number = 1
         for row in self.board:
             print("%d|%s|" % (row_number, "|".join(row)))
             row_number += 1
-    
+
     def letter_to_number():
         """
         Converts the letter to a number and returns it.
@@ -45,10 +46,11 @@ class Board:
                 self.row, self.col = random.randint(0, 4), random.randint(0, 4)
             self.board[self.row][self.col] = "X"
         return self.board
-    
+
     def user_ship_input(self):
         """
-        Requests the user to enter the coordinates of where they would like to place their ships.
+        Requests the user to enter the coordinates of where they would like to
+        place their ships.
         """
         print("\nWhere would you like your ships?")
         ship = 0
@@ -73,7 +75,7 @@ class Board:
                 continue
             ship += 1
         return self.board
-    
+
     def get_user_guess(self):
         """
         This inputs the user for their guesses of where the ship could be.
@@ -104,10 +106,10 @@ class Board:
         """
         self.row, self.col = random.randint(0, 4), random.randint(0, 4)
         while self.board[self.row][self.col] == "X":
-                self.row, self.col = random.randint(0, 4), random.randint(0, 4)
+            self.row, self.col = random.randint(0, 4), random.randint(0, 4)
         self.board[self.row][self.col] = "X"
         return self.board
-    
+
     def all_ships_hit(self):
         """
         Counts the amount of ships hit on the board and increments it by one
@@ -118,7 +120,7 @@ class Board:
                 if row == "O":
                     ships_hit += 1
         return ships_hit
-    
+
     def all_player_ships_hit(self):
         """
         Count starts at 3 for all ships. When reaching 0 the player loses.
@@ -129,7 +131,7 @@ class Board:
                 if col == "?":
                     not_hit -= 1
         return not_hit
-    
+
     def if_hit(self):
         """
         Counts when the player has been hit
@@ -139,20 +141,22 @@ class Board:
             for col in row:
                 if col == "?":
                     hit += 1
-        return hit 
+        return hit
+
 
 def intro_game():
     print("\nWelcome to Battleship!")
     print("\nThe aim is to guess where the opponent has hidden their ships"
-        " and take them out!")
+          " and take them out!")
     print("\nStart off by placing your ships within the play area. A-E for the"
-        " column, and 1-5 for the row.")
+          " column, and 1-5 for the row.")
     print("Once placed, you will see the your board on the bottom with '?'"
-        " represented as your ships. The top board is the computers and you"
-        " guess by using a column and row coordinate which is represented as"
-        " 'O' for a hit, and '-' for a miss. On your side the computers missed"
-        " shots are represented as 'X' and will override your '?' to an 'X'"
-        " when hit.")
+          " represented as your ships. The top board is the computers and you"
+          " guess by using a column and row coordinate which is represented as"
+          " 'O' for a hit, and '-' for a miss. On your side the computers"
+          " missed shots are represented as 'X' and will override your '?' to"
+          " an 'X' when hit.")
+
 
 def run_game():
     """
@@ -182,7 +186,8 @@ def run_game():
         # Check if all the enemy ships have been hit
         if Board.all_ships_hit(guess_board) == 3:
             Board.play_board(guess_board)
-            print("\nCongratulations! You've wiped out all of the enemy ships!")
+            print("\nCongratulations! You've wiped out all of the enemy"
+                  " ships!")
             print("\nYou Win!\n")
             break
 
@@ -210,11 +215,11 @@ def run_game():
         if Board.if_hit(user_board) == 2:
             print("\nOne of your ships have been sunk!")
             continue
-        
+
         # Runs when two of the players ships have been hit
         if Board.if_hit(user_board) == 1:
             print("\nTwo of your ships have now been sunk! Be careful!")
-            continue 
+            continue
 
         # Lose condition for when all player ships have been sunk
         if Board.all_player_ships_hit(user_board) == 25:
@@ -223,13 +228,14 @@ def run_game():
             print("\nYou lose.\n")
             break
 
-        # If the player runs out of turns. It ends in a stalemate. 
+        # If the player runs out of turns. It ends in a stalemate.
         else:
             if turns == 0:
                 print("\nA valiant effort from both sides. But ammo is"
-                "depleted and rations are required for the crew. Both "
-                "sides retreat to resupply for another day.")
+                      "depleted and rations are required for the crew. Both "
+                      "sides retreat to resupply for another day.")
                 break
+
 
 def restart_game():
     while True:
@@ -243,6 +249,7 @@ def restart_game():
         else:
             print("\nNot a valid respones, please type either Y or N")
             continue
+
 
 intro_game()
 run_game()
