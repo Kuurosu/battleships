@@ -150,9 +150,9 @@ def intro_game():
     print("Once placed, you will see the your board on the bottom with '?'"
         " represented as your ships. The top board is the computers and you"
         " guess by using a column and row coordinate which is represented as"
-        " 'O' for a hit, and 'X' for a miss. On your side the computers shots"
-        " are represented as 'X' and will override your '?' to an 'X' when"
-        " hit.")
+        " 'O' for a hit, and '-' for a miss. On your side the computers missed"
+        " shots are represented as 'X' and will override your '?' to an 'X'"
+        " when hit.")
 
 def run_game():
     """
