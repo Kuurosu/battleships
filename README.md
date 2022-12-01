@@ -143,6 +143,17 @@ To add updates from your local IDE to the repository you can use Git in the term
 3. Type ```git commit -m "(insert a meaningful commit message here)"``` and press enter.
 4. When you're ready to push the commits, you can do so by typing ```git push``` and press enter.
 
+### When deploying to Heroku you will need to add the requirements for the dependencies.
+
+To add the dependencies to requirements.txt you need to do the following:
+
+1. Create a requirements.txt
+2. In the terminal type:
+
+```pip3 freeze > requirements.txt```
+
+3. Then you can do the git pushes like normal in the above. 
+
 ## Credits
 
 - I'd like to thank my mentor Brian Macharia for assisting me with the format of my code and reviews.
