@@ -170,7 +170,14 @@ def run_game():
 
         # Uncomment the line below to show the computers board with their boat
         # placement.
-        # Board.play_board(computer_board)
+        Board.play_board(computer_board)
+
+        # Check if all the enemy ships have been hit
+        if Board.all_ships_hit(guess_board) == 3:
+            Board.play_board(guess_board)
+            print("\nCongratulations! You've wiped out all of the enemy ships!")
+            print("\nYou Win!\n")
+            break
 
         # Gets the users guess
         user_row_input, user_col_input = Board.get_user_guess(object)
@@ -200,14 +207,7 @@ def run_game():
         # Runs when two of the players ships have been hit
         if Board.if_hit(user_board) == 1:
             print("\nTwo of your ships have now been sunk! Be careful!")
-            continue
-
-        # Check if all the enemy ships have been hit
-        if Board.all_ships_hit(guess_board) == 3:
-            Board.play_board(guess_board)
-            print("\nCongratulations! You've wiped out all of the enemy ships!")
-            print("\nYou Win!\n")
-            break
+            continue 
 
         # Lose condition for when all player ships have been sunk
         if Board.all_player_ships_hit(user_board) == 25:
@@ -224,5 +224,19 @@ def run_game():
                 "sides retreat to resupply for another day.")
                 break
 
+def restart_game():
+    while True:
+        restart = input("\nWould you like to play again? (Y/N): ").upper().strip()
+        if restart == "N":
+            print("\nQuitting game...")
+            break
+        elif restart == "Y":
+            print("\nStarting game...\n")
+            run_game()
+        else:
+            print("\nNot a valid respones, please type either Y or N")
+            continue
+
 intro_game()
 run_game()
+restart_game()
