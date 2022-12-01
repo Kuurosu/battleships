@@ -177,7 +177,7 @@ def run_game():
 
         # Uncomment the line below to show the computers board with their boat
         # placement.
-        Board.play_board(computer_board)
+        # Board.play_board(computer_board)
 
         # Check if all the enemy ships have been hit
         if Board.all_ships_hit(guess_board) == 3:
