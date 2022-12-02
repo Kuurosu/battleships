@@ -30,12 +30,6 @@ class Board:
             print("%d|%s|" % (row_number, "|".join(row)))
             row_number += 1
 
-    def letter_to_number():
-        """
-        Converts the letter to a number and returns it.
-        """
-        return LETTERS_TO_NUMBER_MAP
-
     def computer_ships(self):
         """
         Randomly places the computers ships on the map within the game area.
@@ -60,7 +54,7 @@ class Board:
                 if self.col not in "ABCDE":
                     print("\nIt needs to be a letter within A-E")
                     continue
-                self.col_convert = Board.letter_to_number()[self.col]
+                self.col_convert = LETTERS_TO_NUMBER_MAP[self.col]
                 self.row = int(input("Choose a row from 1-5: "))
                 if self.row > 5 or self.row < 1:
                     print("\nThe row needs to be between 1-5")
@@ -95,7 +89,7 @@ class Board:
             print("\nNot a valid coordinate. Please try again.")
             return Board.get_user_guess(self)
         try:
-            return user_row - 1, Board.letter_to_number()[user_column]
+            return user_row - 1, LETTERS_TO_NUMBER_MAP[user_column]
         except KeyError:
             print("\nNot a valid coordinate. Please try again.")
             return Board.get_user_guess(self)
