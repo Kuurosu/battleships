@@ -246,6 +246,10 @@ def restart_game():
             continue
 
 
-intro_game()
-run_game()
-restart_game()
+def main():
+    intro_game()
+    run_game()
+    restart_game()
+
+if __name__ == "__main__":
+    main()
