@@ -190,7 +190,7 @@ def run_game():
 
         # Checks to see if user has already guessed the position
         if (guess_board.board[user_row_input][user_col_input] == "O" or
-            guess_board.board[user_row_input][user_col_input] == "-"):
+                guess_board.board[user_row_input][user_col_input] == "-"):
             print("You've already guessed that coordinate. Try again.")
             user_row_input, user_col_input = Board.get_user_guess(object)
 
@@ -250,6 +250,7 @@ def main():
     intro_game()
     run_game()
     restart_game()
+
 
 if __name__ == "__main__":
     main()
