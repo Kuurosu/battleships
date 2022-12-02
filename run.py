@@ -16,7 +16,7 @@ class Board:
     above.
     """
     def __init__(self):
-        self.board = [[" "] * BOARD_HEIGHT for i in range(BOARD_WIDTH)]
+        self.board = [[" "] * BOARD_WIDTH for i in range(BOARD_HEIGHT)]
 
     def play_board(self):
         """
