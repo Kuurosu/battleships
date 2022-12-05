@@ -114,6 +114,22 @@ In accordance to PEP8 I have followed almost all the recommended rules applied t
 
 ![Linter](media/linter-result.png)
 
+## Fixed Bugs
+
+- Inputting nothing and pressing enter on any of the inputs causes a KeyError. Made exception for KeyError to keep attempting till a valid input is made.
+
+- If an error comes up while inputting the ship placement, it would restart the process. Meaning more than 3 ships could have been placed. Fixed with continue statements. 
+
+- If all 3 enemy ships were hit it wouldn't end the game. Fixed by switching checking the column and row around. And putting the check before the next user input.
+
+- If the player made a repeat guess the computer would still get a turn to place an "X". Fixed by moving the computer guess below the user guess input.
+
+- When a user input the row choice, it would + 1 because of the index. Fixed by adding a - 1 to the users input. 
+
+## Unfixed Bugs
+
+- None currently. But still plenty to improve on such as when asking for guesses, it allows no input for the column but still prompts for a row choice but will still error and re-prompt for the input.
+
 ## Deployment
 
 This website was developed using [VS Studio Code](https://code.visualstudio.com). It was added, committed and pushed using git to a GitHub repository.
