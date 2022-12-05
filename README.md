@@ -2,6 +2,14 @@
 
 [Link to game](https://battleships-ci.herokuapp.com/)
 
+## Table Of Contents
+
+- [Description](https://github.com/Kuurosu/battleships#Description)
+- [Strategy](https://github.com/Kuurosu/battleships#Strategy)
+- [Testing](https://github.com/Kuurosu/battleships#Testing)
+- [Deployment](https://github.com/Kuurosu/battleships#Deployment)
+- [Credits](https://github.com/Kuurosu/battleships#Credits)
+
 ## Description
 
 I've designed this game to allow players to play the game Battleships against a computer which randomly decides its ship placement and guesses towards the players board. It also has prompts to allow the player to choose the column and row of where they would like to guess the computers ship.
@@ -76,6 +84,14 @@ The game takes place in a CLI. So new lines are processed for every action they 
 
 - I would like to implement the "Full Game" and "Quick Game" options brought up earlier to allow the player to choose between two different styles of game.
 - A way to have ships of different sizes i.e. a ship that takes up 2, 3 or 4 spaces in a vertical or horizontal line.
+
+### Technologies Used
+
+- Python
+- VSCode
+- [Git:](https://git-scm.com/) Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
+- [GitHub:](https://github.com/) GitHub is used to store the projects code after being pushed from Git.
+- [Heroku:](https://dashboard.heroku.com/) for deployment of the application.
 
 ### Testing
 
