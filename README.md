@@ -112,7 +112,7 @@ I have tested the program on different computers using just the file itself and 
 
 In accordance to PEP8 I have followed almost all the recommended rules applied to my code. I used the CI Linter to check. Apart from a few comments being just over 79 characters long.
 
-![Linter](media/linter.png)
+![Linter](media/linter-result.png)
 
 ## Deployment
 
