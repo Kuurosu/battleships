@@ -54,7 +54,12 @@ class Board:
                 if self.col not in "ABCDE":
                     print("\nIt needs to be a letter within A-E")
                     continue
-                self.col_convert = LETTERS_TO_NUMBER_MAP[self.col]
+                try:
+                    self.col_convert = LETTERS_TO_NUMBER_MAP[self.col]
+                except KeyError:
+                    print("\nPlease choose a letter from A-E." 
+                          " It cannot be left blank.")
+                    continue
                 self.row = int(input("Choose a row from 1-5: "))
                 if self.row > 5 or self.row < 1:
                     print("\nThe row needs to be between 1-5")
