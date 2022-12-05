@@ -79,6 +79,17 @@ The game takes place in a CLI. So new lines are processed for every action they 
 
 ### Testing
 
+ Test Label    | Test Action   | Expected Outcome  | Test Outcome |
+ |---------------|---------------|-------------------|--------------|
+ | Game Setup    | Page Loads    | Game starts and loads the introduction message for the player   | PASS  | --------------------------------
+| Game Start    | User types the coordinate they want the place the first ship  | Prompts for the second and third ship placement. If user types anyting incorrect it will re-ask the prompt till a correct coordinate has been input.   | PASS  | 
+| Boards Load  | After inputting all three ships the player guess board and their ship placement board load  | Boards load with the guess board above the players board. The players board appears with "?" to represent the players ship placement.  | PASS | 
+User Guess    | User types their guess for where the computers ship have been placed | An "X" appears on the guess board to represent a miss, or a "O" if a computers ship was there representing a hit. At the same time the computer guesses a coordinate on the players board represented as "X". | PASS 
+| Player Guessed All 3 Ships  | User has 3 "O" on the guess board | Game ends with a message to tell they player they have won. | PASS 
+| Computer Hits All 3 Player Ships   | All player ships have been replaced by "X"  | Game ends with a message to tell the player that all their ships have sunk and they lose. | PASS
+| Game restart   | After either a win or lose a message comes up to ask if the player wants to play again  | Player answers Y or N and the relevant decision continues. Y plays again, N quits the game. | PASS
+
+
 I have tested the program on different computers using just the file itself and it runs without an issue.
 
 ### Validator Testing
